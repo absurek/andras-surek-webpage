@@ -65,9 +65,72 @@ const { title } = Astro.props;
       }
     </style>
   </head>
+
   <body
     class="min-h-screen bg-background font-sans antialiased text-foreground"
   >
+    <header
+      class="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur"
+    >
+      <div class="container flex h-14 items-center">
+        <div class="mr-4 hidden md:flex">
+          <a class="mr-6 flex items-center space-x-2" href="/">
+            <span class="hidden font-bold sm:inline-block">Surek András</span>
+          </a>
+          <nav class="flex items-center space-x-6 text-sm font-medium">
+            <a
+              class="transition-colors hover:text-foreground/80 text-foreground/60"
+              href="/">Bemutatkozás</a
+            >
+            <a
+              class="transition-colors hover:text-foreground/80 text-foreground"
+              href="/docs/components">Blog</a
+            >
+            <a
+              class="transition-colors hover:text-foreground/80 text-foreground/60"
+              href="/themes">Portfólió</a
+            >
+          </nav>
+        </div>
+        <div
+          class="flex flex-1 items-center justify-between space-x-2 md:justify-end"
+        >
+          <div class="w-full flex-1 md:w-auto md:flex-none">
+            <button
+              class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
+            >
+              CV Letöltés
+            </button>
+          </div>
+          <nav class="flex items-center">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/absurek"
+            >
+              <div
+                class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 py-2 w-9 px-0"
+              >
+                <span>G</span>
+                <span class="sr-only">GitHub</span>
+              </div>
+            </a>
+            <button
+              class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 py-2 w-9 px-0"
+              type="button"
+              id="radix-:Rtlhja:"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              data-state="closed"
+            >
+              <!-- @todo SA: Toggle Theme -->
+               T
+            </button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
     <slot />
   </body>
 </html>
