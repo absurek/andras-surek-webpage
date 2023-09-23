@@ -1,6 +1,8 @@
 ---
 import '@/styles/globals.css';
 
+import Navbar from '@/components/Navbar.astro';
+
 type Props = {
   title: string;
 };
@@ -18,10 +20,13 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <header>TODO</header>
+  <header>
+    <Navbar />
+  </header>
 
   <body>
     <slot />
   </body>
+
 
 </html>

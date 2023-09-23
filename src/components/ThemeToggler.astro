@@ -1,0 +1,23 @@
+---
+/** @todo */
+const icon = '🌓';
+---
+
+<button data-toggle-theme transition:persist>{icon}</button>
+<script>
+  function toggleTheme() {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+      return;
+    }
+
+    document.documentElement.classList.add('dark');
+    localStorage.theme = 'dark';
+  }
+
+  const toggleButtons = document.querySelectorAll('[data-toggle-theme]');
+  toggleButtons.forEach((button) => {
+    button.addEventListener('click', toggleTheme);
+  });
+</script>
