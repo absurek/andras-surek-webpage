@@ -1,9 +1,14 @@
 ---
+import { Icon } from 'astro-icon';
+
 /** @todo */
 const icon = '🌓';
 ---
 
-<button data-toggle-theme transition:persist>{icon}</button>
+<button class="text-4xl p-4" data-toggle-theme transition:persist>
+  <Icon name="tabler:brightness" />
+</button>
+
 <script>
   function toggleTheme() {
     if (document.documentElement.classList.contains('dark')) {
