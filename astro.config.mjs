@@ -6,5 +6,6 @@ import { site } from './src/config/site';
 // https://astro.build/config
 export default defineConfig({
   site,
+  trailingSlash: 'always',
   integrations: [tailwind()],
 });
