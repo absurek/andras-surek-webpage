@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "publish": "rsync -vrP --delete-after ./dist/ andras@andras.surek.hu:/home/andras/website-andras"
+    "deploy": "rsync -vrP --delete-after ./dist/ andras@andras.surek.hu:/home/andras/website-andras"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.0",
