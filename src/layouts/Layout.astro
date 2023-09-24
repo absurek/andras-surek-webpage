@@ -6,18 +6,21 @@ import ThemeAndFavicons from '@/components/ThemeAndFavicons.astro';
 import Fonts from '@/components/Fonts.astro';
 import Navbar from '@/components/Navbar.astro';
 
+import { description } from '@/config/site';
+
 type Props = {
   title: string;
+  pageDescription?: string;
 };
 
-const { title } = Astro.props;
+const { title, pageDescription } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="hu">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={pageDescription ?? description} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
