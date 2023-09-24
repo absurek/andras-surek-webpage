@@ -7,60 +7,56 @@ import TablerDownload from '@/components/icons/TablerDownload.astro';
 import TablerMenu2 from '@/components/icons/TablerMenu2.astro';
 ---
 
-<nav>
-  <div
-    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-  >
-    <a href="/" class="flex items-center">
-      <span class="mr-3 text-3xl">
-        <TablerKeyboard />
-      </span>
-      <span class="self-center text-2xl font-semibold whitespace-nowrap">
-        Surek András
-      </span>
-    </a>
-    <div class="flex md:order-2">
-      <button
-        type="button"
-        class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
-      >
-        <span class="text-xl">CV</span>
-        <TablerDownload />
-      </button>
-      <!-- @todo SA: rearrange into nav-links? -->
-      <ThemeToggler class="hidden md:inline-block" />
-      <button
-        data-collapse-toggle="nav-links"
-        type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden focus:outline-none focus:ring-2"
-        aria-controls="nav-links"
-        aria-expanded="false"
-      >
-        <span class="sr-only">Menü megnyitása</span>
-        <TablerMenu2 />
-      </button>
-    </div>
-    <div
-      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-      id="nav-links"
+<nav class="container flex items-center justify-between mx-auto py-4">
+  <a href="/" class="flex items-center">
+    <span class="mr-3 text-3xl">
+      <TablerKeyboard />
+    </span>
+    <span class="self-center text-2xl font-semibold whitespace-nowrap">
+      Surek András
+    </span>
+  </a>
+  <div class="flex md:order-2">
+    <button
+      type="button"
+      class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
     >
-      <ul
-        class="flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
-      >
-        {
-          navigationLinks.map((navLink) => (
-            <li>
-              <a
-                href={navLink.url}
-                class="block py-2 pl-3 pr-4 rounded md:bg-transparent md:p-0"
-                aria-current="page"
-              >
-                {navLink.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+      <span class="text-xl">CV</span>
+      <TablerDownload />
+    </button>
+    <ThemeToggler class="hidden md:inline-block" />
+    <button
+      data-collapse-toggle="nav-links"
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden focus:outline-none focus:ring-2"
+      aria-controls="nav-links"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Menü megnyitása</span>
+      <TablerMenu2 />
+    </button>
+  </div>
+  <div
+    class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+    id="nav-links"
+  >
+    <ul
+      class="flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
+    >
+      {
+        navigationLinks.map((navLink) => (
+          <li>
+            <a
+              href={navLink.url}
+              class="block py-2 pl-3 pr-4 rounded md:bg-transparent md:p-0 hover:text-foreground/80"
+              class:list={{ underline: Astro.url.pathname === navLink.url }}
+              aria-current="page"
+            >
+              {navLink.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </nav>
