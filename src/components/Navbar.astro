@@ -1,10 +1,10 @@
 ---
-import { navigationLinks } from '@/config/navigation';
-
-import ThemeToggler from '@/components/ThemeToggler.astro';
+import NavButtons from '@/components/NavButtons.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
 import TablerKeyboard from '@/components/icons/TablerKeyboard.astro';
 import TablerDownload from '@/components/icons/TablerDownload.astro';
 import TablerMenu2 from '@/components/icons/TablerMenu2.astro';
+import NavLinks from './NavLinks.astro';
 ---
 
 <nav class="container flex items-center justify-between mx-auto py-4">
@@ -16,47 +16,52 @@ import TablerMenu2 from '@/components/icons/TablerMenu2.astro';
       Surek András
     </span>
   </a>
-  <div class="flex md:order-2">
-    <button
-      type="button"
-      class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
-    >
-      <span class="text-xl">CV</span>
+  <div class="hidden items-center justify-between w-auto md:flex">
+    <NavLinks class="flex font-medium items-center space-x-8" />
+  </div>
+  <div class="flex justify-between">
+    <PrimaryButton type="button" title="Surek András CV - Letöltés" disabled>
+      <span class="text-xl mr-1">CV</span>
       <TablerDownload />
-    </button>
-    <ThemeToggler class="hidden md:inline-block" />
+    </PrimaryButton>
     <button
-      data-collapse-toggle="nav-links"
+      id="menu-button"
       type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden focus:outline-none focus:ring-2"
-      aria-controls="nav-links"
-      aria-expanded="false"
+      class="pl-4 md:hidden hover:text-foreground/80"
     >
       <span class="sr-only">Menü megnyitása</span>
       <TablerMenu2 />
     </button>
-  </div>
-  <div
-    class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-    id="nav-links"
-  >
-    <ul
-      class="flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
-    >
-      {
-        navigationLinks.map((navLink) => (
-          <li>
-            <a
-              href={navLink.url}
-              class="block py-2 pl-3 pr-4 rounded md:bg-transparent md:p-0 hover:text-foreground/80"
-              class:list={{ underline: Astro.url.pathname === navLink.url }}
-              aria-current="page"
-            >
-              {navLink.label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    <div class="hidden pl-2 md:flex">
+      <NavButtons />
+    </div>
   </div>
 </nav>
+
+<nav class="relative">
+  <div
+    id="menu"
+    data-state="closed"
+    class="hidden fixed top-15 right-10 data-[state=open]:flex flex-col z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2"
+  >
+    <NavLinks class="flex flex-col font-medium place-items-center space-y-2" />
+    <NavButtons id="nav-buttons" class="mt-4" />
+  </div>
+</nav>
+
+<script>
+  function setUpMenuListeners() {
+    const menuBtn = document.getElementById('menu-button')!;
+    const menu = document.getElementById('menu')!;
+    const navBtns = document.getElementById('nav-buttons')!;
+
+    menuBtn.addEventListener('click', () => {
+      menu.dataset.state = menu.dataset.state === 'open' ? 'closed' : 'open';
+    });
+
+    navBtns.addEventListener('click', () => (menu.dataset.state = 'closed'));
+  }
+
+  setUpMenuListeners();
+  document.addEventListener('astro:after-swap', setUpMenuListeners);
+</script>

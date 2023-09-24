@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { navigationLinks } from '@/config/navigation';
+
+type Props = HTMLAttributes<'ul'>;
+---
+
+<ul {...Astro.props}>
+  {
+    navigationLinks.map((navLink) => (
+      <li>
+        <a
+          href={navLink.url}
+          class="block hover:text-foreground/80"
+          class:list={{ underline: Astro.url.pathname === navLink.url }}
+        >
+          {navLink.label}
+        </a>
+      </li>
+    ))
+  }
+</ul>

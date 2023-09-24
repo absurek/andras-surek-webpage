@@ -1,18 +1,11 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import TablerSunHigh from '@/components/icons/TablerSunHigh.astro';
 
-type Props = {
-  class?: string;
-};
-
-const { class: className } = Astro.props;
+type Props = HTMLAttributes<'button'>;
 ---
 
-<button
-  class=`${className ?? ''} px-4 text-4xl`
-  data-toggle-theme
-  transition:persist
->
+<button {...Astro.props} data-toggle-theme transition:persist>
   <TablerSunHigh />
 </button>
 
