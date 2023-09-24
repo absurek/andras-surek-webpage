@@ -93,7 +93,7 @@
     };
   })();
 
-  (function () {
+  function setTheme() {
     if (
       localStorage.theme === 'dark' ||
       (!('theme' in localStorage) &&
@@ -104,11 +104,15 @@
       return;
     }
 
+    document.documentElement.classList.remove('dark');
     setFavicons('light');
-  })();
+  }
+
+  setTheme();
+
+  document.addEventListener('astro:after-swap', setTheme);
 
   document.addEventListener('themechanged', (event) => {
-    console.log('themechanged favicons setting to', event.detail.theme);
     setFavicons(event.detail.theme);
   });
 </script>
