@@ -1,8 +1,18 @@
 ---
 import TablerSunHigh from '@/components/icons/TablerSunHigh.astro';
+
+type Props = {
+  class?: string;
+};
+
+const { class: className } = Astro.props;
 ---
 
-<button class="px-4 text-4xl" data-toggle-theme transition:persist>
+<button
+  class=`${className ?? ''} px-4 text-4xl`
+  data-toggle-theme
+  transition:persist
+>
   <TablerSunHigh />
 </button>
 

@@ -27,12 +27,13 @@ import TablerMenu2 from '@/components/icons/TablerMenu2.astro';
         <span class="text-xl">CV</span>
         <TablerDownload />
       </button>
-      <ThemeToggler />
+      <!-- @todo SA: rearrange into nav-links? -->
+      <ThemeToggler class="hidden md:inline-block" />
       <button
-        data-collapse-toggle="navbar-cta"
+        data-collapse-toggle="nav-links"
         type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden focus:outline-none focus:ring-2"
-        aria-controls="navbar-cta"
+        aria-controls="nav-links"
         aria-expanded="false"
       >
         <span class="sr-only">Menü megnyitása</span>
@@ -41,6 +42,7 @@ import TablerMenu2 from '@/components/icons/TablerMenu2.astro';
     </div>
     <div
       class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+      id="nav-links"
     >
       <ul
         class="flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
