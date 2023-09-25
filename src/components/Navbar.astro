@@ -47,19 +47,35 @@ import NavLinks from './NavLinks.astro';
     <NavLinks class="flex flex-col font-medium place-items-center space-y-2" />
     <NavButtons id="nav-buttons" class="mt-4" />
   </div>
+  <div
+    id="menu-closer"
+    class="min-w-full min-h-full hidden bg-red fixed top-0 left-0 right-0 data-[state=open]:block"
+  >
+  </div>
 </nav>
 
 <script>
   function setUpMenuListeners() {
     const menuBtn = document.getElementById('menu-button')!;
     const menu = document.getElementById('menu')!;
+    const menuCloser = document.getElementById('menu-closer')!;
     const navBtns = document.getElementById('nav-buttons')!;
 
     menuBtn.addEventListener('click', () => {
-      menu.dataset.state = menu.dataset.state === 'open' ? 'closed' : 'open';
+      const newState = menu.dataset.state === 'open' ? 'closed' : 'open';
+      menu.dataset.state = newState;
+      menuCloser.dataset.state = newState;
     });
 
-    navBtns.addEventListener('click', () => (menu.dataset.state = 'closed'));
+    menuCloser.addEventListener('click', () => {
+      menu.dataset.state = 'closed';
+      menuCloser.dataset.state = 'closed';
+    });
+
+    navBtns.addEventListener('click', () => {
+      menu.dataset.state = 'closed';
+      menuCloser.dataset.state = 'closed';
+    });
   }
 
   setUpMenuListeners();
