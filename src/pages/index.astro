@@ -1,7 +1,59 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Link from '@/components/ui/Link.astro';
 ---
 
 <Layout title="Surek András — Főoldal">
-  <p class="p-4">Az oldal fejlesztés alatt áll...</p>
+  <section id="intro" class="container flex justify-center">
+    <div class="max-w-xl text-foreground text-justify lg:prose-xl">
+      <h1 class="text-center">Üdvözlöm!</h1>
+      <p>
+        Örülök, hogy itt jár!
+        <strong>Surek András Balázs</strong> vagyok, gyakorlott full-stack
+        fejlesztő. Több mint 5 év professzionális tapasztalattal rendelkezem a
+        webfejlesztés folyton fejlődő világában. Eddigi karrierem során
+        lehetőségem volt több piacilag rendkívül fontos terméken dolgozni,
+        kiváltképp a vállalati bankolás világában, egy magasan jegyzett
+        szoftverfejlesztő és tanácsadó cég alkalmazottjaként.
+      </p>
+      <p>
+        A programozási nyelvek feneketlen világában tett utazásomnak
+        köszönhetően több technológiában is jártas vagyok. A <em>C/C++</em>
+         nyelvekkel kezdtem meg nyitogatni szárnyaimat még 2015-ben, melyeket
+        azóta is rendszeresen használom. Magabiztosan nyúlok továbbá akár a
+        <em>Java</em>, akár pedig a <em>Python</em> kódokhoz is. Azonban valódi
+        szenvedélyem a webfejlesztés, nem meglepő tehát, hogy a mindennapokban a
+        leggyakrabban használt eszközeim a
+        <em>JavaScript</em> és a <em>TypeScript</em>.
+      </p>
+      <p>
+        Szerszámosládámban megannyi webframework és könyvtár található, többek
+        között a <em>React</em>, <em>Next.js</em>, <em>SvelteKit</em>,
+        <em>Astro</em>, vagy a mára divatjamúlt <em>jQuery</em>. Azonban
+        félreértés ne essék; amennyiben szükséges, "egyszerű vanilla"
+        JavaScripttel is szívesen dolgozom.
+      </p>
+      <p>
+        Amikor pedig kizárólag szerveroldali fejlesztésre van szükség, mindig
+        ott a <em>Node.js</em> (vagy a <em>Bun</em>?).
+        <em>Express.js</em>&nbsp;<em>REST API</em>-kal és
+        <em>NestJS</em> szerverekkel is volt már dolgom. Újabban pedig a
+        <em>Go</em> irányába is elkezdtem kacsingatni.
+      </p>
+      <p>
+        Akár egy teljes web applikációt szeretne, akár egy divatos reszponzív
+        felületetet, vagy egy robosztus backendet terméke támogatáshoz,
+        <Link href="/contact/">keressen fel</Link>, rám számíthat! Munkámat
+        igényesen végzem és elhivatottan követem a webes technológiák
+        fejlődését, így bitos lehet benne, hogy projektje jó kezekben lesz.
+      </p>
+      <p>
+        Köszönöm, hogy elolvasta bemutatkozómat, alig várom, hogy közösen életre
+        kelthessük innovatív ötletét! Nyugodtan nézzen körbe az oldalamon,
+        <Link href="/blog/">blogomban</Link> érdekes technológiákról olvashat,
+        vagy megnézheti korábbi munkáimat és demo projektjeimat a
+        <Link href="/portfolio/">portfóliómban</Link>.
+      </p>
+    </div>
+  </section>
 </Layout>

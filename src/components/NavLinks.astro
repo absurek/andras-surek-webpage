@@ -1,5 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import Link from '@/components/ui/Link.astro';
+
 import { navigationLinks } from '@/config/navigation';
 
 type Props = HTMLAttributes<'ul'>;
@@ -8,17 +10,14 @@ type Props = HTMLAttributes<'ul'>;
 <ul {...Astro.props}>
   {
     navigationLinks.map((navLink) => (
-      <>
-        <li>
-          <a
-            href={navLink.url}
-            class="block hover:text-foreground/80"
-            class:list={{ underline: Astro.url.pathname === navLink.url }}
-          >
-            {navLink.label}
-          </a>
-        </li>
-      </>
+      <li>
+        <Link
+          href={navLink.url}
+          class:list={{ underline: Astro.url.pathname === navLink.url }}
+        >
+          {navLink.label}
+        </Link>
+      </li>
     ))
   }
 </ul>
