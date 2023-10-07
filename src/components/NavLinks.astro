@@ -9,15 +9,19 @@ type Props = HTMLAttributes<'ul'>;
 
 <ul {...Astro.props}>
   {
-    navigationLinks.map((navLink) => (
-      <li>
-        <Link
-          href={navLink.url}
-          class:list={{ underline: Astro.url.pathname === navLink.url }}
-        >
-          {navLink.label}
-        </Link>
-      </li>
-    ))
+    navigationLinks.map((navLink) => {
+      const isCurrentPage = Astro.url.pathname === navLink.url;
+      return (
+        <li>
+          <Link
+            href={navLink.url}
+            class:list={{ underline: isCurrentPage }}
+            aria-current={isCurrentPage ? 'page' : 'false'}
+          >
+            {navLink.label}
+          </Link>
+        </li>
+      );
+    })
   }
 </ul>
