@@ -30,11 +30,10 @@ const { title, pageDescription } = Astro.props;
 
     <title>{title}</title>
   </head>
-  <header class="mb-8">
-    <Navbar />
-  </header>
-
-  <body>
+  <body class="overflow-y-scroll">
+    <header class="mb-8">
+      <Navbar />
+    </header>
     <main class="container">
       <slot />
     </main>
