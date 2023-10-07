@@ -5,7 +5,7 @@ export type NavigationLink = {
 
 export const navigationLinks: readonly NavigationLink[] = [
   { label: 'Főoldal', url: '/' },
-  { label: 'Kapcsolat', url: '/contact/' },
+  { label: 'Névjegy', url: '/contact/' },
   { label: 'Blog', url: '/blog/' },
   { label: 'Portfólió', url: '/portfolio/' },
 ];
