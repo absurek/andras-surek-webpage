@@ -1,5 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+const featuredPosts = posts.filter((post) => post.data.featured);
 ---
 
 <Layout title="Surek András — Blog">
@@ -12,6 +17,13 @@ import Layout from '@/layouts/Layout.astro';
         tapasztalataimat. Szolgáljon ez a hely digitális archívumként, amely
         nemcsak nekem, hanem minden kedves érdeklődőnek hasznos lehet.
       </p>
+      {
+        featuredPosts.map((post) => (
+          <h2 class="text-foreground">
+            <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+          </h2>
+        ))
+      }
     </div>
   </section>
 </Layout>
