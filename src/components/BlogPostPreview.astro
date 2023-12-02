@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+  post: CollectionEntry<'posts'>;
+};
+
+const { post } = Astro.props;
+---
+
+<article class="flex flex-col prose">
+  <h2>{post.data.title}</h2>
+  <div>
+    <p>{post.data.description}</p>
+    <a href={`/blog/${post.slug}/`}>tovább &rarr;</a>
+  </div>
+</article>

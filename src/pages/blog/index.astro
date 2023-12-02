@@ -1,4 +1,5 @@
 ---
+import BlogPostPreview from '@/components/BlogPostPreview.astro';
 import Layout from '@/layouts/Layout.astro';
 
 import { getCollection } from 'astro:content';
@@ -10,20 +11,16 @@ const featuredPosts = posts.filter((post) => post.data.featured);
 <Layout title="Surek András — Blog">
   <section id="intro" class="container flex justify-center">
     <div class="max-w-xl text-foreground text-justify prose lg:prose-xl">
-      <h1 class="text-center text-foreground">Egy fejlesztő naplója</h1>
+      <h1 class="text-center text-foreground">Blog</h1>
       <p>
-        Ez a digitális tér nem csupán személyes napló számomra, hanem egy
-        átgondolt és strukturált referencia pont, ahol rögzítem fejlesztői
-        tapasztalataimat. Szolgáljon ez a hely digitális archívumként, amely
-        nemcsak nekem, hanem minden kedves érdeklődőnek hasznos lehet.
+        Ez a digitális tér csupán személyes archívum számomra, ennek megfelelően
+        érdemes hozzáállni! Ugyanakkor igyekszem átgondolt és strukturált
+        referencia ponttá tenni, amely nemcsak nekem, hanem minden kedves
+        érdeklődőnek hasznos lehet.
       </p>
-      {
-        featuredPosts.map((post) => (
-          <h2 class="text-foreground">
-            <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-          </h2>
-        ))
-      }
+      <div class="flex gap-4 justify-between">
+        {featuredPosts.map((post) => <BlogPostPreview {post} />)}
+      </div>
     </div>
   </section>
 </Layout>
