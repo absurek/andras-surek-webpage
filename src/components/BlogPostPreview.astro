@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
+import Link from '@/components/ui/Link.astro';
+
 type Props = {
   post: CollectionEntry<'posts'>;
 };
@@ -8,10 +10,21 @@ type Props = {
 const { post } = Astro.props;
 ---
 
-<article class="flex flex-col prose">
-  <h2>{post.data.title}</h2>
-  <div>
-    <p>{post.data.description}</p>
-    <a href={`/blog/${post.slug}/`}>tovább &rarr;</a>
+<article id="card" class="flex justify-center">
+  <div class="rounded-lg border bg-card text-card-foreground shadow-sm px-8">
+    <div class="space-y-1.5 p-6">
+      <h3 class="text-2xl font-semibold leading-none tracking-tight">
+        {post.data.title}
+      </h3>
+    </div>
+
+    <div class="p-6 pt-0 grid gap-1">
+      <div class="flex flex-col">
+        <p>{post.data.description}</p>
+        <Link class="self-end mt-8" href={`/blog/${post.slug}/`}>
+          tovább &rarr;
+        </Link>
+      </div>
+    </div>
   </div>
 </article>
