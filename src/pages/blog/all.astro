@@ -16,7 +16,7 @@ const posts = await getCollection('posts');
   </section>
 
   <section id="posts" class="max-w-xl container mt-8">
-    <div class="grid grid-cols-2 justify-between w-full gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 justify-between w-full gap-4">
       {posts.map((post) => <BlogPostPreview {post} />)}
     </div>
   </section>
